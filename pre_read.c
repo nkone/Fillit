@@ -6,11 +6,11 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 18:40:40 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/18 16:01:25 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/03/21 10:42:17 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
+#include "fillit.h"
 
 void	ft_exit()
 {
@@ -72,6 +72,7 @@ int pre_read(const int fd)
 {
 	char *line;
 
+	line = NULL;
 	while (1)
 	{
 		read_one(fd, line);
@@ -80,7 +81,6 @@ int pre_read(const int fd)
 		free(line);
 		if (ft_strlen(line) != 0)
 			ft_exit();
-
 	}
 	close(fd);
 	return(1);
