@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 14:40:25 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/18 16:03:04 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/03/21 10:53:13 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,6 @@ typedef struct		s_list
 # define FD_LIMIT 4864
 
 int					get_next_line(int const fd, char **line);
-
-/*
-** Fillit
-*/
-
-int					pre_read(const int fd);
 
 /*
 ** String lib
@@ -98,6 +92,7 @@ char				*ft_strtok(char *str, const char *sep);
 char				*ft_strtok_r(char *s, char const *delim, char **save_ps);
 int					ft_strtok_ntokens(char const *str, char const *c);
 int					ft_strchr_nchr(char const *str, int c);
+int					tabcmp(int *tab, int *arr, int n);
 
 /*
 ** Ctype lib
