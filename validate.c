@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 09:41:41 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/21 18:25:58 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/03/25 10:34:06 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		*one_tetris(const int fd, char *line)
 			{
 				tab[i] = x;
 				tab[i + 1] = y;
-				i+=2;
+				i += 2;
 			}
 			x++;
 		}
@@ -84,11 +84,13 @@ int		*trans_coord(int *tab)
 	int lx;
 	int ly;
 	int i;
+	int size;
 
+	size = 4;
 	lx = low_x(tab);
 	ly = low_y(tab);
 	i = 0;
-	while (tab[i] >= 0 && tab[i] <= 3)
+	while (size--)
 	{
 		tab[i] -= lx;
 		tab[i + 1] -= ly;
@@ -97,7 +99,7 @@ int		*trans_coord(int *tab)
 	return (tab);
 }
 
-char	*get_tetID(int *tet)
+char	*get_tetid(int *tet)
 {
 	char *name;
 
@@ -119,6 +121,5 @@ char	*get_tetID(int *tet)
 	(tabcmp(tet, SR_PIECE, sizeof(tet))) && (name = "SR_PIECE");
 	(tabcmp(tet, Z_PIECE, sizeof(tet))) && (name = "Z_PIECE");
 	(tabcmp(tet, ZR_PIECE, sizeof(tet))) && (name = "ZR_PIECE");
-
 	return (name);
 }
