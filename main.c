@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 12:30:19 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/21 18:26:31 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/03/25 10:31:57 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void		print_piece(stck_tet *piece)
 {
 	while (piece)
 	{
-		printf("%s\n", piece->name);
+		printf("%s\n", piece->tet_id);
 		piece = piece->next;
 	}
 }
 
-stck_tet	*add_piece(char *tet_id, stck_tet *next)
+stck_tet	*add_piece(char *tet_id)
 {
 	stck_tet *piece;
 
 	piece = (stck_tet *)malloc(sizeof(stck_tet));
-	piece->name = tet_id;
+	piece->tet_id = tet_id;
 	piece->next = NULL;
 	return (piece);
 }
@@ -39,12 +39,12 @@ stck_tet	*append(char *tet_id, stck_tet *head)
 	cursor = head;
 	while (cursor->next != NULL)
 		cursor = cursor->next;
-	piece = add_piece(tet_id, NULL);
+	piece = add_piece(tet_id);
 	cursor->next = piece;
 	return (head);
 }
 
-stck_tet	*store_tet(const int fd, char *line)
+stck_tet	*store_tet(int fd, char *line)
 {
 	int			*tet;
 	char		*tet_id;
@@ -55,10 +55,10 @@ stck_tet	*store_tet(const int fd, char *line)
 	while (1)
 	{
 		tet = trans_coord(one_tetris(fd, line));
-		if(!(tet_id = get_tetID(tet)))
+		if(!(tet_id = get_tetid(tet)))
 			ft_exit();
 		if (first == NULL)
-			first = add_piece(tet_id, first);
+			first = add_piece(tet_id);
 		else
 			piece = append(tet_id, first);
 		free(tet);
@@ -73,11 +73,13 @@ stck_tet	*store_tet(const int fd, char *line)
 int			main(void)
 {
 	int			fd;
-	char		*line;
-	stck_tet	*piece;
-
+	char *line;
+	stck_tet	*stack;
 	fd = open("./tetris.txt", O_RDONLY);
 	line = NULL;
-	piece = store_tet(fd, line);
-	print_piece(piece);
+	//pre_read(fd);
+	//fd = open("./tetris.txt", O_RDONLY);
+	stack = store_tet(fd, NULL);
+	print_piece(stack);
+	close(fd);
 }
