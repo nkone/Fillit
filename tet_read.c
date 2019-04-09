@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   tet_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 18:26:14 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/23 16:18:44 by phtruong         ###   ########.fr       */
+/*   Created: 2019/03/24 12:57:32 by phtruong          #+#    #+#             */
+/*   Updated: 2019/03/25 10:23:37 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** DESCRIPTION
-** strcpy() functions copy the string src to dst
-** (including the terminating `\0' character.) Does not overrides src.
-** RETURN VALUES
-** strcpy() returns dst.
-*/
+#include "fillit.h"
 
-#include "libft.h"
-
-char	*ft_strcpy(char *dst, const char *src)
+char **one_block(const int fd)
 {
-	char	*string;
-	size_t	n;
+	char **block;
+	char buff[BLOCK_SIZE + 1];
+	int	chr_read;
 
-	n = ft_strlen(src) + 1;
-	string = ft_memcpy(dst, src, n);
-	return (string);
+	block = NULL;
+	if (fd > 0)
+	{
+		chr_read = read(fd, buff, BLOCK_SIZE);
+		if (chr_read == 0)
+			return (NULL);
+		buff[BLOCK_SIZE] = '\0';
+		block = ft_strsplit(buff, '\n');
+	}
+	else
+		return (NULL);
+	return (block);
 }

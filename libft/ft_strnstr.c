@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:44:18 by phtruong          #+#    #+#             */
-/*   Updated: 2019/02/15 20:34:26 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/03/28 10:59:54 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_strnstr(const char *str, const char *find, size_t len)
 	str_len = ft_strlen(str);
 	find_len = ft_strlen(find);
 	n = len - find_len;
+	if (n > str_len)
+		n = str_len;
 	if (!*find)
 		return (char *)str;
 	if (!find_len)

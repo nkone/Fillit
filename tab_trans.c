@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   tab_trans.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 18:26:14 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/23 16:18:44 by phtruong         ###   ########.fr       */
+/*   Created: 2019/03/26 17:47:56 by phtruong          #+#    #+#             */
+/*   Updated: 2019/03/26 17:53:06 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** DESCRIPTION
-** strcpy() functions copy the string src to dst
-** (including the terminating `\0' character.) Does not overrides src.
-** RETURN VALUES
-** strcpy() returns dst.
-*/
+#include "fillit.h"
 
-#include "libft.h"
-
-char	*ft_strcpy(char *dst, const char *src)
+int		*x_shift(int *tab, int x)
 {
-	char	*string;
-	size_t	n;
+	int i;
+	int size;
 
-	n = ft_strlen(src) + 1;
-	string = ft_memcpy(dst, src, n);
-	return (string);
+	size = 4;
+	i = 0;
+	while (size--)
+	{
+		tab[i] = tab[i] + x;
+		i+=2;
+	}
+	return(tab);
+}
+
+int		*y_shift(int *tab, int y)
+{
+	int i;
+	int size;
+
+	size = 4;
+	i = 1;
+	while (size--)
+	{
+		tab[i] = tab[i] + y;
+		i+=2;
+	}
+	return(tab);
 }

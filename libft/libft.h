@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 14:40:25 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/21 10:53:13 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/03 14:21:50 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct		s_list
 ** GNL
 */
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 100
 # define FD_LIMIT 4864
 
 int					get_next_line(int const fd, char **line);

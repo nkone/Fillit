@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/11 18:26:14 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/23 16:18:44 by phtruong         ###   ########.fr       */
+/*   Created: 2019/03/25 21:37:34 by phtruong          #+#    #+#             */
+/*   Updated: 2019/03/28 11:00:25 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** DESCRIPTION
-** strcpy() functions copy the string src to dst
-** (including the terminating `\0' character.) Does not overrides src.
-** RETURN VALUES
-** strcpy() returns dst.
-*/
-
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int main(void)
 {
-	char	*string;
-	size_t	n;
-
-	n = ft_strlen(src) + 1;
-	string = ft_memcpy(dst, src, n);
-	return (string);
+	char *s = "dsad";
+	char *t = "dad";
+	char *str = ft_strnstr(s,t,10);
+	//char *pstr = strnstr(s,t,10);
+	printf("|%s|\n", str);
+	//printf("|%s|\n", pstr);
 }

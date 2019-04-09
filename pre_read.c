@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 18:40:40 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/21 10:42:17 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/01 13:05:14 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_exit()
 {
 	printf("error\n");
-	exit(0);
+	exit(1);
 }
 
 int	h_count(char *line)
@@ -55,14 +55,12 @@ int read_one(const int fd, char *line)
 	while (n_line < 4)
 	{
 		get_next_line(fd, &line);
-		printf("%s\n", line);
 		count += h_count(line);
 		if (ft_strlen(line) != 4 || count > 4 || !chk_char(line))
 			ft_exit();
 		n_line++;
 		free(line);
 	}
-	printf("count of #: %d\n", count);
 	if (count < 4)
 		ft_exit();
 	return (1);

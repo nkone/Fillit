@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 09:41:41 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/25 10:34:06 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/08 14:04:59 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int		*one_tetris(const int fd, char *line)
 	int		*tab;
 	int		i;
 
-	y = 4;
+	y = -1;
 	tab = (int *)malloc(sizeof(int) * 8);
 	i = 0;
-	while (--y >= 0)
+	while (++y <= 3)
 	{
 		x = 0;
 		get_next_line(fd, &line);
@@ -68,6 +68,7 @@ int		*one_tetris(const int fd, char *line)
 		{
 			if (line[x] == '#')
 			{
+				//printf("x, y: %d, %d\n", x, y);
 				tab[i] = x;
 				tab[i + 1] = y;
 				i += 2;
@@ -113,6 +114,8 @@ char	*get_tetid(int *tet)
 	(tabcmp(tet, LL_PIECE, sizeof(tet))) && (name = "LL_PIECE");
 	(tabcmp(tet, J_PIECE, sizeof(tet))) && (name = "J_PIECE");
 	(tabcmp(tet, JR_PIECE, sizeof(tet))) && (name = "JR_PIECE");
+	(tabcmp(tet, JD_PIECE, sizeof(tet))) && (name = "JD_PIECE");
+	(tabcmp(tet, JL_PIECE, sizeof(tet))) && (name = "JL_PIECE");
 	(tabcmp(tet, T_PIECE, sizeof(tet))) && (name = "T_PIECE");
 	(tabcmp(tet, TR_PIECE, sizeof(tet))) && (name = "TR_PIECE");
 	(tabcmp(tet, TD_PIECE, sizeof(tet))) && (name = "TD_PIECE");
