@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:47:56 by phtruong          #+#    #+#             */
-/*   Updated: 2019/03/26 17:53:06 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/08 18:01:24 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,12 @@ int		*y_shift(int *tab, int y)
 		i+=2;
 	}
 	return(tab);
+}
+
+int		*shift_tet(int *tab, int x, int y)
+{
+	tab = x_shift(tab, x);
+	tab = y_shift(tab, y);
+
+	return (tab);
 }

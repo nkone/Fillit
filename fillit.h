@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 09:53:23 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/06 20:00:54 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:31:24 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct tetris
 {
 	void *tet_id;
+	char c;
 	struct tetris *next;
 } stck_tet;
 
@@ -48,12 +49,14 @@ char				*get_tetid(int *tab);
 int					*trans_coord(int *tab);
 int					*x_shift(int *tab, int x);
 int					*y_shift(int *tab, int y);
+int					*shift_tet(int *tab, int x, int y);
 int					*one_tetris(const int fd, char *line);
 char				**one_block(const int fd);
 stck_tet			*store_tet(const int fd, char *line);
-stck_tet			*append(void *tet_id, stck_tet *head);
-stck_tet			*add_piece(void *tet_id);
+stck_tet			*append(void *tet_id, stck_tet *head, char c);
+stck_tet			*add_piece(void *tet_id, char c);
 int					count_tet(stck_tet *stack);
 int					start_size(stck_tet *stack);
+void				clear_piece(char **grid, int *tab, int x, int y);
 
 #endif

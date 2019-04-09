@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 14:01:54 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/08 17:46:09 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/08 21:46:25 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,30 +113,33 @@ int		hi_x(int *tab)
 	return (x);
 }
 
-void	insert_piece(char **grid, int *tab, int *x, int *y, int flag)
+void	insert_piece(char **grid, int *tab, int x, int y, char c)
 {
 	int i;
-	int ox;
-	int oy;
-	char c;
-	static int pos;
 
-	ox = *x;
-	oy = *y;
-	if (flag)
-		pos = 0;
-	c = 'A' + pos;
 	i = 0;
 	while (i < 8)
 	{
-		*y = tab[i + 1];
-		*x = tab[i];
-		grid[*y][*x] = c;
+		y = tab[i + 1];
+		x = tab[i];
+		grid[y][x] = c;
 		i += 2;
 	}
-	*x = ox;
-	*y = oy;
-	pos += 1;
+}
+void	clear_piece(char **grid, int *tab, int x, int y)
+{
+	int i;
+
+	i = 0;
+	while (i < 8)
+	{
+		printf("hi\n");
+		y = tab[i+1];
+		x = tab[i];
+		printf("x, y: %d %d\n", x, y);
+		grid[y][x] = '.';
+		i+=2;
+	}
 }
 
 int	find_dot(char **grid, int x, int *y, int size)
@@ -235,23 +238,20 @@ stck_tet	*id_to_coord(stck_tet *stack)
 {
 	stck_tet	*head;
 	stck_tet	*piece;
-	int			*tab;
-	int			i = 0;
 	char		*tet_id;
-	int			count;
+	char		c;
+	int			*tab;
 
+	c = 'A';
 	head = NULL;
 	while(stack)
 	{
 	tet_id = stack->tet_id;
 	tab = convert_id(tet_id);
-	//printf("tab[0]: %d\n", tab[0]);
-	//printf("%s\n", tet_id);
 	if (head == NULL)
-		head = add_piece(tab);
+		head = add_piece(tab, c++);
 	else
-		piece = append(tab, head);
-//	free(tab);
+		piece = append(tab, head, c++);
 	stack = stack->next;
 	}
 	return(head);
@@ -283,23 +283,45 @@ void	free_grid(char **grid, int size)
 	free(grid);
 }
 
-int solve_tet(int x, int y, stck_tet *stack, int size, int flag)
+int		collision(char **grid, int *tet, int size)
 {
-	stck_tet *tmp;
+	return(!(box_collide(tet, size)) && !(piece_collide(grid, tet)));
+}
+int solve_tet(char **grid, stck_tet *stack, int size, int flag)
+{
 	int *tet;
+	int x;
+	int y;
 
-	tmp = stack;
-	tet = dup_coord(tmp->tet_id);
-	if (!box_collide(tet, size))
+	x = 0;
+	y = 0;
+	if (!stack)
+		return (1);
+	while (y < size)
 	{
-		insert_piece(grid, tet, &x, &y, flag);
-		free(tet);
+		x = 0;
+		while (x < size)
+		{
+			tet = dup_coord(stack->tet_id);
+			shift_tet(tet, x, y);
+			printf("tet[]: %d %d\n", tet[0], tet[1]);
+			if (collision(grid, tet, size))
+			{
+				printf("insert @ x, y: %d %d\n", x, y);
+				insert_piece(grid, tet, x, y, stack->c);
+				if (solve_tet(grid, stack->next, size, 0))
+				{	
+					free(tet);
+					return (1);
+				}
+				clear_piece(grid, tet, x, y);
+				printf("after clear\n");
+			}
+			free(tet);
+			x++;
+		}
+		y++;
 	}
-	else
-		return (0);
-	stack = stack->next;
-	tmp = stack;
-	
 	return (0);
 }
 int main(void)
@@ -311,27 +333,29 @@ int main(void)
 	stck_tet *stack;
 	stck_tet *tmp;
 	stck_tet *store;
-	char *tet_id = NULL;
 	int *tab = NULL;
+	int *tet = NULL;
 	int x, y, flag = 0;
 	
-	fd = open("tetris.txt", O_RDONLY);
+	fd = open("sample.txt", O_RDONLY);
 	tmp = store_tet(fd, NULL);
 	size = start_size(tmp);
 	printf("size: %d\n", size);
 	stack = id_to_coord(tmp);
-	stck_free(tmp);
-	tmp = stack;
-	tab = dup_coord(tmp->tet_id);
-	while(i < 8)
-	{
-		printf("tab[%d] : %d\n", i , tab[i]);
-		i++;
-	}
-	x = 0; y =0;
 	grid = gen_grid(size);
-	insert_piece(grid, tab, &x, &y, flag);
-	i = 0;
+	while(!solve_tet(grid, stack, size, 1))
+	{
+		free_grid(grid, size);
+		size+=1;
+		grid = gen_grid(size);
+	}
+/*	free_grid(grid, size);
+	size+=1;
+	grid = gen_grid(size);
+	printf("solve: %d\n",solve_tet(grid, stack, size, 1));*/
+	/*size += 1;
+	grid = gen_grid(size);
+	printf("%d\n",solve_tet(grid, stack, size, 1));*/
 	while(grid[i])
 	{
 		printf("line %d: |%s|\n", i, grid[i]);
