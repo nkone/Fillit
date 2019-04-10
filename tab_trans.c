@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/26 17:47:56 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/08 18:01:24 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/09 20:19:49 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		*x_shift(int *tab, int x)
 	while (size--)
 	{
 		tab[i] = tab[i] + x;
-		i+=2;
+		i += 2;
 	}
-	return(tab);
+	return (tab);
 }
 
 int		*y_shift(int *tab, int y)
@@ -37,15 +37,14 @@ int		*y_shift(int *tab, int y)
 	while (size--)
 	{
 		tab[i] = tab[i] + y;
-		i+=2;
+		i += 2;
 	}
-	return(tab);
+	return (tab);
 }
 
 int		*shift_tet(int *tab, int x, int y)
 {
 	tab = x_shift(tab, x);
 	tab = y_shift(tab, y);
-
 	return (tab);
 }

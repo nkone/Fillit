@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 09:53:23 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/09 19:53:45 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/09 20:16:33 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct tetris
 # define SR_PIECE (int [8]) {0,0,0,1,1,1,1,2}
 # define Z_PIECE (int [8]) {0,0,1,0,1,1,2,1}
 # define ZR_PIECE (int [8]) {1,0,0,1,1,1,0,2}
-# define BLOCK_SIZE 20
+# define USAGE "usage:\t./fillit source_file\n"
 
 int					pre_read(const int fd);
 void				ft_exit();	
