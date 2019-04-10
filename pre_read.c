@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 18:40:40 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/01 13:05:14 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:04:54 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_exit()
 {
-	printf("error\n");
+	ft_putstr("error\n");
 	exit(1);
 }
 
@@ -54,12 +54,14 @@ int read_one(const int fd, char *line)
 	count = 0;
 	while (n_line < 4)
 	{
-		get_next_line(fd, &line);
+		if (get_next_line(fd, &line))
+		{
 		count += h_count(line);
 		if (ft_strlen(line) != 4 || count > 4 || !chk_char(line))
 			ft_exit();
-		n_line++;
 		free(line);
+		}
+		n_line++;
 	}
 	if (count < 4)
 		ft_exit();

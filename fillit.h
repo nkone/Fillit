@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 09:53:23 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/08 21:31:24 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:53:45 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,16 @@ char				**one_block(const int fd);
 stck_tet			*store_tet(const int fd, char *line);
 stck_tet			*append(void *tet_id, stck_tet *head, char c);
 stck_tet			*add_piece(void *tet_id, char c);
+stck_tet			*id_to_coord(stck_tet *stack);
+int					*convert_id(char *id);
 int					count_tet(stck_tet *stack);
 int					start_size(stck_tet *stack);
-void				clear_piece(char **grid, int *tab, int x, int y);
+char				**gen_grid(int size);
+void				free_grid(char **grid, int size);
+void				stck_free(stck_tet *stack);
+void				stck_free_coord(stck_tet *stack);
+void				clear_piece(char **grid, int *tab);
+int					solve_tet(char **grid, stck_tet *stack, int size);
+int					solve_driver(const int fd);
 
 #endif

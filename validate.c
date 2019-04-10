@@ -6,7 +6,7 @@
 /*   By: phtruong <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 09:41:41 by phtruong          #+#    #+#             */
-/*   Updated: 2019/04/08 14:04:59 by phtruong         ###   ########.fr       */
+/*   Updated: 2019/04/09 15:41:05 by phtruong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int		*one_tetris(const int fd, char *line)
 		{
 			if (line[x] == '#')
 			{
-				//printf("x, y: %d, %d\n", x, y);
 				tab[i] = x;
 				tab[i + 1] = y;
 				i += 2;
