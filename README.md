@@ -5,9 +5,9 @@ C project: write a program that reads a file of tetrominos, then output them (wi
 
 **Sample file**
 >.\.\.#\
-.\.\.#\
-.\.\.#\
-.\.\.#
+>.\.\.#\
+>.\.\.#\
+>.\.\.#
 >
 >\##.\.\
 >\##.\.\
@@ -15,9 +15,9 @@ C project: write a program that reads a file of tetrominos, then output them (wi
 >.\.\.\.
 
 **Output**
->ABB\.
->ABB\.
->A.\.\.
+>ABB\.\
+>ABB\.\
+>A.\.\.\
 >A.\.\.
 
 ## Table of Contents
