@@ -34,6 +34,7 @@ C project: write a program that reads a file of tetrominos, then output them (wi
   * [Collision](#collision)
   * [Backtracking](#backtracking)
   * [Extra](#extra)
+* [Final Score](#final-score)
 <!--te-->
 
 ### How to use
