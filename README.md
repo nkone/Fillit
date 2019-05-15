@@ -54,10 +54,12 @@ Functions allowed: **open**, **close**, **exit**, **read**, **write**, **malloc*
 
 ### Algorithm
 I broke this project up into multiple steps:
-1. Check if the file is valid (find illegal characters, extra spaces, extra **'#'**).\
+1. Check if the file is valid.
 2. Store the **'#'** as an integer array.
 3. Shift the pieces.
 4. Store the pieces in a linked list.
 5. Backtracking.
+
+### Details
 
 [table]:https://github.com/nkone/Fillit/blob/master/includes/fillit.h
