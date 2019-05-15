@@ -4,10 +4,10 @@ C project: write a program that reads a file of tetrominos, then output them (wi
 [pdf]:https://github.com/nkone/Fillit/blob/master/fillit.pdf
 
 **Sample file**
->.\..# 
->.\..#
->.\..#
->.\..#
+>.\.\.#
+>.\.\.#
+>.\.\.#
+>.\.\.#
 >
 >\##.\.
 >\##.\.
