@@ -1,4 +1,4 @@
-*Here's a little picture of my puyo puyo tetris opening.*\
+*Here's a little picture of my favorite tetris opening.*\
 ![](DT_canon.png)
 # PROJECT: FILLIT
 C project: write a program that reads a file of tetrominos, then output them (without rotations) with a least amount of empty spaces. There are multiple solutions; however, pieces are prioritized top left based on the order coming from the file. Refer to [pdf][pdf] for more details.
@@ -51,3 +51,13 @@ Functions allowed: **open**, **close**, **exit**, **read**, **write**, **malloc*
 
 
 [norm]:https://github.com/nkone/Fillit/blob/master/norme.en.pdf
+
+### Algorithm
+I broke this project up into multiple steps:
+1. Check if the file is valid (find illegal characters, extra spaces, extra **'#'**).\
+2. Store the **'#'** as an integer array.
+3. Shift the pieces.
+4. Store the pieces in a linked list.
+5. Backtracking.
+
+[table]:https://github.com/nkone/Fillit/blob/master/includes/fillit.h
