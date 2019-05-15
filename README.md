@@ -7,11 +7,11 @@ C project: write a program that reads a file of tetrominos, then output them (wi
 >.\.\.#\
 .\.\.#\
 .\.\.#\
-.\.\.#\
+.\.\.#
 >
->\##.\.
->\##.\.
->.\.\.\.
+>\##.\.\
+>\##.\.\
+>.\.\.\.\
 >.\.\.\.
 
 **Output**
