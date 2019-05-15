@@ -75,8 +75,10 @@ I broke this project up into multiple steps:
 #### Validation
 For validation, I read in the file twice since reread function is forbidden.
 
-The first time I read, I checked for number of #'s, extra newlines, extra spaces, whether the piece is a block of 4 lines, or invalid characters. The second time, I collect the pieces as an integer array and use it to compare with my macro [table][table] in my header file.
+The first time I read, I checked for number of #'s, extra newlines, extra spaces, whether the piece is a block of 4 lines, or invalid characters. The second time, I collect the pieces as an integer array and use it to compare with my macro [table][table] in my header file.\
+
 ![](images/table.png)
+
 Even though I collected them as integer arrays and shift them top left, I append to my linked list as literal strings matching my macro names. Reason for that is, I want a return NULL if the comparsion returns *false*. If NULL then my program will exit and output "Error". I wasn't sure at that time if there was a better method. If you use this program as reference, you can make it faster if you can shorten this conversion part. After I got the strings, I convert them back to integer arrays ¯\_(ツ)_/¯. You can find my comparison function **get_id()** and **convert_id()** in [*tab_trans.c*][shift].
 
 #### Shifting
