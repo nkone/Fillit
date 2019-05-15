@@ -21,7 +21,7 @@ C project: write a program that reads a file of tetrominos, then output them (wi
 >A.\.\.
 
 ## Table of Contents
-* [How to use](#how)
+* [How to use](#how-to-use)
 
 ### How to use
 ```
