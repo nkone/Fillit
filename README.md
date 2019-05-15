@@ -1,96 +1,51 @@
----
-title: 'Project documentation template'
-disqus: hackmd
----
+# PROJECT: FILLIT
+=============================================
+C project: write a program that reads a file of tetrominos, then output them (without rotations) with a least amount of empty spaces. There are multiple solutions; however, pieces are prioritized top left based on the order coming from the file. Refer to [pdf][pdf] for more details.
 
-Project Title
-===
-![downloads](https://img.shields.io/github/downloads/atom/atom/total.svg)
-![build](https://img.shields.io/appveyor/ci/:user/:repo.svg)
-![chat](https://img.shields.io/discord/:serverId.svg)
+[pdf]:https://github.com/nkone/Fillit/blob/master/fillit.pdf
+
+**Sample file**
+>.\..# 
+>.\..#
+>.\..#
+>.\..#
+>
+>\##.\.
+>\##.\.
+>.\.\.\.
+>.\.\.\.
+
+**Output**
+>ABB\.
+>ABB\.
+>A.\.\.
+>A.\.\.
 
 ## Table of Contents
+* [How to use](#how)
 
-[TOC]
-
-## Beginners Guide
-
-If you are a total beginner to this, start here!
-
-1. Visit hackmd.io
-2. Click "Sign in"
-3. Choose a way to sign in
-4. Start writing note!
-
-User story
----
-
-```gherkin=
-Feature: Guess the word
-
-  # The first example has two steps
-  Scenario: Maker starts a game
-    When the Maker starts a game
-    Then the Maker waits for a Breaker to join
-
-  # The second example has three steps
-  Scenario: Breaker joins a game
-    Given the Maker has started a game with the word "silky"
-    When the Breaker joins the Maker's game
-    Then the Breaker must guess a word with 5 characters
+### How to use
 ```
-> I choose a lazy person to do a hard job. Because a lazy person will find an easy way to do it. [name=Bill Gates]
-
-
-```gherkin=
-Feature: Shopping Cart
-  As a Shopper
-  I want to put items in my shopping cart
-  Because I want to manage items before I check out
-
-  Scenario: User adds item to cart
-    Given I'm a logged-in User
-    When I go to the Item page
-    And I click "Add item to cart"
-    Then the quantity of items in my cart should go up
-    And my subtotal should increment
-    And the warehouse inventory should decrement
+git clone https://github.com/nkone/Fillit
+make
 ```
-
-> Read more about Gherkin here: https://docs.cucumber.io/gherkin/reference/
-
-User flows
----
-```sequence
-Alice->Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
-Note left of Alice: Alice responds
-Alice->Bob: Where have you been?
+After make, run the binary executable called fillit like so
 ```
-
-> Read more about sequence-diagrams here: http://bramp.github.io/js-sequence-diagrams/
-
-Project Timeline
----
-```mermaid
-gantt
-    title A Gantt Diagram
-
-    section Section
-    A task           :a1, 2014-01-01, 30d
-    Another task     :after a1  , 20d
-    section Another
-    Task in sec      :2014-01-12  , 12d
-    anther task      : 24d
+./fillit sourcefile
 ```
+If a sourcefile is invalid, the program will display error.
 
-> Read more about mermaid here: http://knsv.github.io/mermaid/
+>./fillit sample | cat -e
+>Error
 
-## Appendix and FAQ
+Make sure the each piece in the file, except the last piece, is followed by a newline. There can't be other characters, except **'.'** and **'#'**. Each tetromino must be valid. Refer to [sample.txt][sample].
 
-:::info
-**Find this document incomplete?** Leave a comment!
-:::
+[sample]:https://github.com/nkone/Fillit/blob/master/sample.txt
 
-###### tags: `Templates` `Documentation`
+### Project Mandatory
+For projects written in C, students at 42 must follow [Norm][norm] standard for 42SiliconValley.
+
+Functions allowed: **open**, **close**, **exit**, **read**, **write**, **malloc**, and **free**.
+
+
+[norm]:https://github.com/nkone/Fillit/blob/master/norme.en.pdf
