@@ -1,5 +1,5 @@
 *Here's a little picture of my favorite tetris opening.*\
-![](DT_canon.png)
+![](images/DT_canon.png)
 # PROJECT: FILLIT
 C project: write a program that reads a file of tetrominos, then output them (without rotations) with a least amount of empty spaces. There are multiple solutions; however, pieces are prioritized top left based on the order coming from the file. Refer to [pdf][pdf] for more details.
 
@@ -98,7 +98,7 @@ Well, since the project is written in C, it's important to check for memory leak
 There are three free function I made for this project: **stck_free()**, **stck_free_coord()**, and **free_grid()**. The first two is necessary to free the linked list. Since there are two different structure I made for linked list, one is pointer to string without malloc, another is malloced integer array, I need two different kind of free. I forgot to free the grid after done printing them. The grid function is consider a weak leak so it's *ok*. See [*free_fn.c*][free] for details.
 
 ## Final Score
-![](score.png)
+![](images/score.png)
 
 [table]:https://github.com/nkone/Fillit/blob/master/includes/fillit.h
 [shift]:https://github.com/nkone/Fillit/blob/master/srcs/tab_trans.c
