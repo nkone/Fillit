@@ -1,3 +1,4 @@
+![](DT_canon.png)
 # PROJECT: FILLIT
 C project: write a program that reads a file of tetrominos, then output them (without rotations) with a least amount of empty spaces. There are multiple solutions; however, pieces are prioritized top left based on the order coming from the file. Refer to [pdf][pdf] for more details.
 
