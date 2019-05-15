@@ -75,7 +75,7 @@ I broke this project up into multiple steps:
 #### Validation
 For validation, I read in the file twice since reread function is forbidden.
 
-The first time I read, I checked for number of #'s, extra newlines, extra spaces, whether the piece is a block of 4 lines, or invalid characters. The second time, I collect the pieces as an integer array and use it to compare with my macro [table][table] in my header file.\
+The first time I read, I checked for number of #'s, extra newlines, extra spaces, whether the piece is a block of 4 lines, or invalid characters. The second time, I collect the pieces as an integer array and use it to compare with my macro [table][table] in my header file.
 
 ![](images/table.png)
 
@@ -86,6 +86,9 @@ Shifting is not that hard, look for *min_x* and *min_y* then subtract them from 
 
 ### Linked list
 My linked list has three variables (a void pointer, a char, and a pointer to next node of the list). See my [header][table].
+
+![](images/struct.png)
+
 In order to store them, I made two functions **add_piece()** and **append()**. The function *add_piece()* does exactly what it says, add a piece. Since I use a void pointer for my main data, I can point it to an integer array or a string, making it possible for two separate data types. A character (*char c*) is used for identification of the order of the piece. First piece gets 'A'. Second is 'B' and so on. However, because of the structure of linked list, I need the function *append()* to traverse to the end of the list and add a piece there. Most of the structure related functions are located in [*stack.c*][stack]. Most of the linked list structure I learn is from [zentut][zentut].
 
 ### Collision
